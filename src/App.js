@@ -40,24 +40,35 @@ const buildLanguageDistribution = (repos) => {
 
 const buildContributionStats = (days) => {
   if (!days?.length) return null;
-  const sorted = [...days].sort((a, b) => new Date(a.date) - new Date(b.date));
-  const sumLast = (n) => sorted.slice(-n).reduce((sum, day) => sum + day.count, 0);
+
+  const sorted = [...days].sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
+
+  const sumLast = (n) =>
+    sorted.slice(-n).reduce((sum, day) => sum + day.count, 0);
 
   let longest = 0;
   let current = 0;
-  let streak = 0;
+  let activeStreak = 0;
 
   for (const day of sorted) {
     if (day.count > 0) {
-      streak += 1;
-      current += 1;
+      activeStreak += 1;
+      longest = Math.max(longest, activeStreak);
     } else {
-      longest = Math.max(longest, streak);
-      streak = 0;
-      current = 0;
+      activeStreak = 0;
     }
   }
-  longest = Math.max(longest, streak);
+
+  // Calculate current streak from latest day backwards
+  for (let i = sorted.length - 1; i >= 0; i--) {
+    if (sorted[i].count > 0) {
+      current += 1;
+    } else {
+      break;
+    }
+  }
 
   return {
     daily: sumLast(1),
