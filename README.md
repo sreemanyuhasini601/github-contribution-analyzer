@@ -1,70 +1,133 @@
-# Getting Started with Create React App
+# GitHub Contribution Analyzer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+GitHub Contribution Analyzer is a system that analyzes a developer’s GitHub profile and extracts meaningful insights from their activity.
 
-In the project directory, you can run:
+It transforms raw GitHub data into structured and visual insights such as coding patterns, activity level, language usage, developer type, and skill insights.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Key Idea
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Takes a GitHub username as input  
+- Fetches real-time data using GitHub REST API  
+- Analyzes repositories, languages, stars, and activity  
+- Converts raw data into meaningful insights and visualizations  
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+### Profile Analysis
+- Profile picture, name, bio  
+- Followers and following  
+- Public repositories  
+- Account details  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Repository Analysis
+- Repository name  
+- Stars and forks  
+- Primary language  
+- Top repositories based on stars  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+### Language (Tech Stack) Analysis
+- Extract programming languages from repositories  
+- Calculate language frequency  
+- Display results using charts  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Activity Analysis
+- Yearly contribution pattern  
+- Activity consistency level (High / Medium / Low)  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Code Streak
+- Current streak calculation  
+- Longest streak tracking  
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Developer Classification
+- Frontend Developer  
+- Backend Developer  
+- Full Stack Developer  
+- Python Developer  
+- General Developer  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+### Insight Generation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Rule-based developer classification  
+- LLM (AI model) powered insights for:
+  - Skill level prediction (Beginner / Intermediate / Advanced)  
+  - Coding pattern analysis  
+  - Developer behavior insights  
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🛠 Tech Stack
 
-### Making a Progressive Web App
+### Frontend
+- React.js  
+- Tailwind CSS  
+- JavaScript  
+- Chart.js  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### API
+- GitHub REST API  
+- LLM API (for AI-based insights)
 
-### Advanced Configuration
+### Tools
+- VS Code  
+- Node.js  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## How It Works
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. User enters a GitHub username  
+2. Application fetches data using GitHub API  
+3. Data is processed and analyzed using custom logic  
+4. LLM generates intelligent insights  
+5. Results are displayed using charts and UI components  
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Core Engineering Logic
+
+### Fallback System
+GitHub data is not always complete or reliable.  
+To handle this, the system uses a fallback approach:
+- Primary source: GitHub contribution data API  
+- Secondary source: repository-level activity signals  
+
+This ensures the application always produces meaningful output.
+
+---
+
+### Streak Calculation
+Streaks are calculated based on consecutive active days.  
+If there is a gap in activity, the current streak resets while the longest streak is preserved.
+
+---
+
+## Future Improvements
+
+- AI-based skill analysis improvements using LLMs  
+- GraphQL-based optimization for contribution data  
+- Developer comparison feature  
+- SaaS deployment with AI-powered insights  
+
+---
+
+## Author
+
+Built as a GitHub profile analysis tool that converts raw data into meaningful developer insights.
